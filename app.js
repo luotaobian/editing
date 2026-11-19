@@ -1,10 +1,10 @@
 const works = {
   'mask-stick': {title:'棒状面膜 · 省事直涂',category:'美妆带货 / 素材剪辑练习',src:'assets/mask-stick.mp4',poster:'assets/mask-turn.jpg',portrait:true,note:'“一转”“一涂”分别落在旋出膏体和上脸的动作上。'},
   'ai-question': {title:'AI 选股 · 先换个问法',category:'知识口播 / 素材剪辑练习',src:'assets/ai-question.mp4',poster:'assets/ai-question-card.jpg',portrait:true,note:'讲者提到回测时，提问卡逐项补上条件和时间范围。'},
-  'olay-short': {title:'OLAY · 母女护肤口播',category:'复刻练习 · 非品牌委托',src:'assets/olay-short.mp4',poster:'assets/olay-short-poster.jpg',portrait:true,note:'按参考片复刻人物窗口，用两层字幕区分对白与重点词。'},
+  'olay-short': {title:'OLAY · 母女护肤口播 · 参考复刻版',category:'复刻练习 · 非品牌委托',src:'assets/olay-short.mp4',poster:'assets/olay-short-poster.jpg',portrait:true,note:'按参考片复刻人物窗口，用两层字幕区分对白与重点词。'},
   jacket: {title:'肌理翻领外套',category:'商品剪辑练习 · 非品牌委托',src:'assets/jacket-short.mp4',poster:'assets/jacket-short-poster.jpg',portrait:true,note:'从面料、翻领特写切到多色挂拍，最后给出选色选码提示。'},
   education: {title:'别让孩子一个人承担',category:'知识口播 / 素材剪辑练习',src:'assets/education-short.mp4',poster:'assets/education-short-poster.jpg',portrait:true,note:'用重点字幕带出“陪伴”的建议，片尾用文字收住话题。'},
-  olay: {title:'OLAY · 母女抗老实测 · 自制包装版',category:'自制包装练习 · 非品牌委托',src:'assets/olay-web.mp4',poster:'assets/olay-poster.jpg',portrait:true,note:'同一组素材重新设计画面包装，声音沿用参考片混音。'},
+  olay: {title:'OLAY · 母女护肤口播 · 自制包装版',category:'自制包装练习 · 非品牌委托',src:'assets/olay-web.mp4',poster:'assets/olay-poster.jpg',portrait:true,note:'同一组素材重新设计画面包装，声音沿用参考片混音。'},
   london: {
     title: '伦敦川流', category: '城市影像 / 个人创作',
     src: 'assets/london-flow.mp4', poster: 'assets/london-flow-poster.jpg', portrait: false,
@@ -17,7 +17,7 @@ const works = {
   },
   gap: {title:'罅隙 G A P · 剪辑分析节选',category:'团队短片 / 英文分析节选',src:'assets/gap-analysis.mp4',poster:'assets/gap-poster.jpg',portrait:false,note:'我负责编导、剪辑、调色与声音后期。节选拆解动作衔接与人物反应镜头。'}
 };
-const shortOrder = ['olay-short','mask-stick','ai-question','jacket','education'];
+const shortOrder = ['olay-short','ai-question','mask-stick','jacket','education'];
 // Exact release sizes also detect truncated files or a host that returns an HTML page.
 const smallMedia = {
   'mask-stick': {file:'assets/mask-stick-lite.mp4', bytes:458313},
