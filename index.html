@@ -13,7 +13,7 @@
   <meta property="og:description" content="从棒状面膜使用演示到 AI 知识口播。点击作品直接观看，了解制作重点与负责内容。">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css?v=editor-profile">
-  <script src="app.js" defer></script>
+  <script src="app.js?v=mobile2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#works">跳到短视频代表作</a>
@@ -199,9 +199,9 @@
     <div class="dialog-top"><div><p class="eyebrow" id="player-category"></p><h2 id="player-title"></h2></div><button class="close-button" id="close-player" type="button" aria-label="关闭视频">关闭 <span aria-hidden="true">×</span></button></div>
     <div class="video-stage"><video id="portfolio-video" controls playsinline preload="none" aria-label="作品视频播放器"></video></div>
     <nav class="player-navigation" id="player-navigation" aria-label="切换短视频作品"><button id="previous-video" type="button">← 上一条</button><span id="player-position" aria-live="polite"></span><button id="next-video" type="button">下一条 →</button></nav>
-    <div class="dialog-bottom"><div><p id="player-note"></p><button class="player-variant" id="player-variant" type="button" hidden></button></div><a id="video-direct" href="assets/olay-short.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div>
+    <div class="dialog-bottom"><div><p id="player-note"></p><button class="player-variant" id="player-variant" type="button" hidden></button></div><button class="player-variant" id="buffer-video" type="button" hidden>先缓冲再播放</button><a id="video-direct" href="assets/olay-short.mp4" target="_blank" rel="noopener">单独打开高清版 ↗</a></div>
     <p id="player-status" class="player-status" role="status" aria-live="polite" hidden></p>
-    <p id="player-error" class="player-error" role="alert" hidden>视频暂时无法播放，请尝试“单独打开视频”。</p>
+    <p id="player-error" class="player-error" role="alert" hidden>视频暂时无法播放，可重试或单独打开高清版。</p>
   </dialog>
 </body>
 </html>
