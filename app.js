@@ -5,9 +5,19 @@ const works = {
   jacket: {title:'肌理翻领外套',category:'商品剪辑练习 · 非品牌委托',src:'assets/jacket-short.mp4',poster:'assets/jacket-short-poster.jpg',portrait:true,note:'从面料、翻领特写切到多色挂拍，最后给出选色选码提示。'},
   education: {title:'别让孩子一个人承担',category:'知识口播 / 素材剪辑练习',src:'assets/education-short.mp4',poster:'assets/education-short-poster.jpg',portrait:true,note:'用重点字幕带出“陪伴”的建议，片尾用文字收住话题。'},
   olay: {title:'OLAY · 母女抗老实测 · 自制包装版',category:'自制包装练习 · 非品牌委托',src:'assets/olay-web.mp4',poster:'assets/olay-poster.jpg',portrait:true,note:'同一组素材重新设计画面包装，声音沿用参考片混音。'},
+  london: {
+    title: '伦敦川流', category: '城市影像 / 个人创作',
+    src: 'assets/london-flow.mp4', poster: 'assets/london-flow-poster.jpg', portrait: false,
+    note: '17 秒的伦敦街景，开头和结尾回到同一个过街信号。'
+  },
+  rat: {
+    title: 'RAT', category: '英国剧情短片 / 美术助理',
+    src: 'assets/rat-film.mp4', poster: 'assets/rat-film-poster.jpg', portrait: false,
+    note: '片尾 10:48 的剧组署名为 Art Assistant · Lutao Bian。'
+  },
   gap: {title:'罅隙 G A P · 剪辑分析节选',category:'团队短片 / 英文分析节选',src:'assets/gap-analysis.mp4',poster:'assets/gap-poster.jpg',portrait:false,note:'我负责编导、剪辑、调色与声音后期。节选拆解动作衔接与人物反应镜头。'}
 };
-const shortOrder = ['mask-stick','ai-question','olay-short','jacket','education'];
+const shortOrder = ['olay-short','mask-stick','ai-question','jacket','education'];
 // Exact release sizes also detect truncated files or a host that returns an HTML page.
 const smallMedia = {
   'mask-stick': {file:'assets/mask-stick-lite.mp4', bytes:458313},
@@ -16,6 +26,8 @@ const smallMedia = {
   jacket: {file:'assets/jacket-short-mobile.mp4', bytes:721185},
   education: {file:'assets/education-short-mobile.mp4', bytes:2479888},
   olay: {file:'assets/olay-web-mobile.mp4', bytes:8718899},
+  london: {file:'assets/london-flow-mobile.mp4', bytes:2322389},
+  rat: {file:'assets/rat-film-mobile.mp4', bytes:22317163},
   gap: {file:'assets/gap-analysis-mobile.mp4', bytes:6518739}
 };
 const dialog = document.querySelector('#video-dialog');
@@ -209,7 +221,7 @@ bufferButton.addEventListener('click', async () => {
 });
 
 function shortIndex(){return shortOrder.indexOf(currentKey === 'olay' ? 'olay-short' : currentKey);}
-function showWork(key, trigger){
+function showWork(key, trigger, startTime = 0){
   const work = works[key];
   if(!work)return;
   if(!dialog.open)lastTrigger = trigger || document.activeElement;
@@ -217,7 +229,7 @@ function showWork(key, trigger){
   ++loadRevision;
   video.pause();
   releaseBuffer();
-  resumeTime = 0;
+  resumeTime = startTime;
   document.querySelector('#player-title').textContent = work.title;
   document.querySelector('#player-category').textContent = work.category;
   document.querySelector('#player-note').textContent = work.note;
@@ -227,7 +239,8 @@ function showWork(key, trigger){
   direct.href = work.src;
   direct.textContent = '单独打开高清版 ↗';
   playbackSource = lightPlayback ? smallMedia[key].file : work.src;
-  video.src = playbackSource;
+  video.preload = startTime > 0 ? 'auto' : 'none';
+  restoreSource(playbackSource);
   bufferButton.hidden = !canBuffer;
   bufferButton.textContent = '先缓冲再播放';
   video.poster = work.poster;
@@ -245,10 +258,10 @@ function showWork(key, trigger){
   if(!dialog.open)dialog.showModal();
   dialog.scrollTop = 0;
   document.body.classList.add('player-open');
-  playCurrent();
+  if (startTime === 0) playCurrent();
 }
 for(const trigger of document.querySelectorAll('[data-play]')){
-  trigger.addEventListener('click',()=>showWork(trigger.dataset.play,trigger));
+  trigger.addEventListener('click',()=>showWork(trigger.dataset.play,trigger,Number(trigger.dataset.start || 0)));
 }
 previous.addEventListener('click',()=>{const index=shortIndex();if(index>0)showWork(shortOrder[index-1]);});
 next.addEventListener('click',()=>{const index=shortIndex();if(index>=0 && index<shortOrder.length-1)showWork(shortOrder[index+1]);});
